@@ -33,8 +33,5 @@ public class TaskController {
     public void createTask(TaskDto taskDto) {
 
     }
-
-    @RequestMapping(method = RequestMethod.POST, value = "myTaskInModule18_4")
-    public TaskDto myTaskInModule18_4(TaskDto taskDto){ return  new TaskDto(1L,"Task in 18.4", "I have done");}
 }
 
