@@ -50,9 +50,9 @@ public class TaskController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "getByIdTask")
-    public List<TaskDto> getByIdTask(){
-        List<Task> task = service.getAllById();
-        return taskMapper.mapToTaskDtoList(task);
+    public TaskDto getByIdTask() {
+        Task task = service.getFindByIdTask();
+        return taskMapper.mapToTaskDto(task);
     }
 }
 
