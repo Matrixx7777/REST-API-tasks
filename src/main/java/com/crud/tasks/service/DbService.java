@@ -14,11 +14,18 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class DbService {
 
-    private final TaskRepository repository;
+    @Autowired
+    private TaskRepository repository;
 
     public List<Task> getAllTasks() {
         return repository.findAll();
     }
 
     public Task getFindByIdTask() { return repository.findById(); }
+
+    public Optional<Task> getTask(final Long id) { return repository.findById(id); }
+
+    public Task saveTask(final Task task) { return repository.save(task); }
+
+    public Task deleteTask(final Long id) { return  repository.deleteTaskById(id); }
 }
