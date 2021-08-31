@@ -15,7 +15,6 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class TaskController {
 
-
     private final DbService service;
     private final TaskMapper taskMapper;
 
