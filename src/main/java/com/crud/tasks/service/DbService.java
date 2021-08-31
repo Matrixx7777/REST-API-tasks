@@ -17,11 +17,9 @@ public class DbService {
     @Autowired
     private TaskRepository repository;
 
-    public List<Task> getAllTasks() {
-        return repository.findAll();
-    }
+    public List<Task> getAllTasks() { return repository.findAll(); }
 
-    public Task getFindByIdTask() { return repository.findById(); }
+    public Task getFindByIdTask(Long id) { return repository.findTaskById(id); }
 
     public Optional<Task> getTask(final Long id) { return repository.findById(id); }
 
