@@ -33,3 +33,7 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+bootWar {
+	archiveName 'crud.war'
+}
