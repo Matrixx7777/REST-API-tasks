@@ -19,9 +19,9 @@ public class TrelloClient {
 
     @Value("${trello.api.endpoint.prod}")
     private String trelloApiEndpoint;
-    @Value("${trello.app.key}")
+    @Value("${trello.api.key}")
     private String trelloAppKey;
-    @Value("${trello.app.token}")
+    @Value("${trello.api.token}")
     private String trelloToken;
     @Value("${trello.api.username}")
     private String trelloUserName;
@@ -32,6 +32,7 @@ public class TrelloClient {
                 .queryParam("token", trelloToken)
                 .queryParam("fields", "name,id")
                 .queryParam("username", trelloUserName)
+                .queryParam("lists", "all")
                 .build()
                 .encode()
                 .toUri();
