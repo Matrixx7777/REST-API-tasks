@@ -4,5 +4,10 @@
       "name": "trello.api.endpoint.prod",
       "type": "java.lang.String",
       "description": "Description for trello.api.endpoint.prod."
-  }
-] }
+    },
+    {
+      "name": "trello.app.username",
+      "type": "java.lang.String",
+      "description": "Description for trello.app.username."
+    }
+  ] }
