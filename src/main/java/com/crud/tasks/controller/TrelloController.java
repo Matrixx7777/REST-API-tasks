@@ -30,7 +30,6 @@ public class TrelloController {
 //                        trelloList.getName() + " - " + trelloList.getId() + " - " + trelloList.isClosed()
 //                );
 //            });
-//
 //        });
 //    }
 
