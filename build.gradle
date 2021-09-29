@@ -2,7 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.4.5'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
-	id 'war'
+//	id 'war'
 }
 
 group = 'com.kodilla'
@@ -29,13 +29,13 @@ dependencies {
 	testCompileOnly 'org.projectlombok:lombok:1.18.20'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
 
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+//	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 }
 
 test {
 	useJUnitPlatform()
 }
 
-bootWar {
-	archiveName 'crud.war'
-}
+//bootWar {
+//	archiveName 'crud.war'
+//}
