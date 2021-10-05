@@ -33,16 +33,12 @@ dependencies {
 
 	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
 	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
-
-//	compile('io.springfox:springfox-swagger2:2.9.2')
-//	compile('io.springfox:springfox-swagger-ui:2.9.2')
-
 }
 
 test {
 	useJUnitPlatform()
 }
 
-//bootWar {
-//	archiveName 'crud.war'
-//}
+bootWar {
+	archiveName 'crud.war'
+}
