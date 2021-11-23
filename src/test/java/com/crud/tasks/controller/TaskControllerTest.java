@@ -152,16 +152,23 @@ class TaskControllerTest {
         String jsonContent = gson.toJson(taskDto);
 
         //Then
-        mockMvc
-                .perform(MockMvcRequestBuilders
-                        .put("/v1/task/updateTask")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .characterEncoding("UTF-8")
-                        .content(jsonContent)
-                )
-                //updateTask
-                .andExpect(MockMvcResultMatchers.status().is(200))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(1)));
+        try {
+            mockMvc
+                    .perform(MockMvcRequestBuilders
+                            .put("/v1/task/updateTask")
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .characterEncoding("UTF-8")
+                            .content(jsonContent)
+                    )
+                    //updateTask
+                    .andExpect(MockMvcResultMatchers.status().is(200))
+                    .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(1)));
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            System.out.println("Method has been finished");
+        }
     }
 
     @Test
@@ -179,14 +186,21 @@ class TaskControllerTest {
         String jsonContent = gson.toJson(taskDto);
 
         //Then
-        mockMvc
-                .perform(MockMvcRequestBuilders
-                        .delete("/v1/task/deleteTask")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .characterEncoding("UTF-8")
-                        .content(jsonContent)
-                )
-                //deleteTask
-                .andExpect(MockMvcResultMatchers.status().is(200));
+        try {
+            mockMvc
+                    .perform(MockMvcRequestBuilders
+                            .delete("/v1/task/deleteTask")
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .characterEncoding("UTF-8")
+                            .content(jsonContent)
+                    )
+                    //deleteTask
+                    .andExpect(MockMvcResultMatchers.status().is(200));
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        } finally {
+            System.out.println("Method has been finished");
+        }
     }
 }
