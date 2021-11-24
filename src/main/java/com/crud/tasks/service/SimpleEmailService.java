@@ -31,8 +31,10 @@ public class SimpleEmailService {
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());
         mailMessage.setText(mail.getMessage());
-        if(mailMessage.getToCc.isPresent()){
-            mailMessage.setToCc(String.valueOf(mail.getToCc()));
+        if(!mail.getToCc().isEmpty()){
+            mailMessage.setCc(String.valueOf(mail.getToCc()));
+        } else {
+            System.out.println("There is no email text");
         }
         return mailMessage;
     }
