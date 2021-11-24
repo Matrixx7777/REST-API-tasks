@@ -77,7 +77,7 @@ class TaskControllerTest {
         //Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .get("/v1/task/getTask")
+                        .get("/v1/task/getTask?taskId=1")
                         .contentType(MediaType.APPLICATION_JSON))
                 // getTask fields
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(1)))
@@ -100,7 +100,7 @@ class TaskControllerTest {
         //Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .get("/v1/task/getByIdTask")
+                        .get("/v1/task/getByIdTask?taskId=1")
                         .contentType(MediaType.APPLICATION_JSON)
                 )
                 // getFindByIdTask fields
@@ -126,14 +126,13 @@ class TaskControllerTest {
         //Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/v1/task/createTask")
+                        .post("/v1/task/createTask?taskId=1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("UTF-8")
                         .content(jsonContent)
                 )
                 //createTask
-                .andExpect(MockMvcResultMatchers.status().is(200))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(1)));
+                .andExpect(MockMvcResultMatchers.status().is(200));
 
     }
 
@@ -155,14 +154,13 @@ class TaskControllerTest {
         try {
             mockMvc
                     .perform(MockMvcRequestBuilders
-                            .put("/v1/task/updateTask")
+                            .put("/v1/task/updateTask?taskId=1")
                             .contentType(MediaType.APPLICATION_JSON)
                             .characterEncoding("UTF-8")
                             .content(jsonContent)
                     )
                     //updateTask
-                    .andExpect(MockMvcResultMatchers.status().is(200))
-                    .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(1)));
+                    .andExpect(MockMvcResultMatchers.status().is(200));
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -189,7 +187,7 @@ class TaskControllerTest {
         try {
             mockMvc
                     .perform(MockMvcRequestBuilders
-                            .delete("/v1/task/deleteTask")
+                            .delete("/v1/task/deleteTask?taskId=1")
                             .contentType(MediaType.APPLICATION_JSON)
                             .characterEncoding("UTF-8")
                             .content(jsonContent)
