@@ -9,5 +9,10 @@
       "name": "trello.app.username",
       "type": "java.lang.String",
       "description": "Description for trello.app.username."
+    },
+    {
+      "name": "admin.name",
+      "type": "java.lang.String",
+      "description": "Description for admin.name."
     }
   ] }
