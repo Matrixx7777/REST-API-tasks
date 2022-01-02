@@ -32,18 +32,18 @@ public class SimpleEmailService {
         }
     }
 
-//    private SimpleMailMessage createMailMessage(final Mail mail) {
-//        SimpleMailMessage mailMessage = new SimpleMailMessage();
-//        mailMessage.setTo(mail.getMailTo());
-//        mailMessage.setSubject(mail.getSubject());
-//        mailMessage.setText(mail.getMessage());
-//        if(!mail.getToCc().isEmpty()){
-//            mailMessage.setCc(String.valueOf(mail.getToCc()));
-//        } else {
-//            System.out.println("There is no email text");
-//        }
-//        return mailMessage;
-//    }
+    private SimpleMailMessage createMailMessage(final Mail mail) {
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(mail.getMailTo());
+        mailMessage.setSubject(mail.getSubject());
+        mailMessage.setText(mail.getMessage());
+        if(!mail.getToCc().isEmpty()){
+            mailMessage.setCc(String.valueOf(mail.getToCc()));
+        } else {
+            System.out.println("There is no email text");
+        }
+        return mailMessage;
+    }
 
     private MimeMessagePreparator createMimeMessage(final Mail mail) {
         return mimeMessage -> {
@@ -52,14 +52,5 @@ public class SimpleEmailService {
             messageHelper.setSubject(mail.getSubject());
             messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()), true);
         };
-    }
-
-
-    private SimpleMailMessage createMailMessage(final Mail mail) {
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setTo(mail.getMailTo());
-        mailMessage.setSubject(mail.getSubject());
-        mailMessage.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()));
-        return mailMessage;
     }
 }
