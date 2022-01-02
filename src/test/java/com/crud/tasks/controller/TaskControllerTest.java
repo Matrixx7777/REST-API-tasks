@@ -50,7 +50,7 @@ class TaskControllerTest {
         //Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .get("/v1/task/getTasks")
+                        .get("/v1/tasks")       //"/v1/task/getTasks"
                         .contentType(MediaType.APPLICATION_JSON))
                 // getTasks fields
                 .andExpect(MockMvcResultMatchers.jsonPath
@@ -77,7 +77,7 @@ class TaskControllerTest {
         //Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .get("/v1/task/getTask?taskId=1")
+                        .get("/v1/tasks/1")       //"/v1/task/getTask?taskId=1"
                         .contentType(MediaType.APPLICATION_JSON))
                 // getTask fields
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(1)))
@@ -86,28 +86,28 @@ class TaskControllerTest {
     }
 
 
-    @Test
-    void testGetFindByIdTask() throws Exception {
-        //Given
-        Task task = new Task( 1L,"Test-Task", "Test");
-        Long getId = task.getId();
-        TaskDto taskDto = new TaskDto( 1L,"Test-TaskDto", "taskDto has task");
-
-        //When
-        when(dbService.getFindByIdTask(getId)).thenReturn(task);
-        when(taskMapper.mapToTaskDto(task)).thenReturn(taskDto);
-
-        //Then
-        mockMvc
-                .perform(MockMvcRequestBuilders
-                        .get("/v1/task/getByIdTask?taskId=1")
-                        .contentType(MediaType.APPLICATION_JSON)
-                )
-                // getFindByIdTask fields
-                .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(1)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.title", Matchers.is("Test-TaskDto")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.content", Matchers.is("taskDto has task")));
-    }
+//    @Test
+//    void testGetFindByIdTask() throws Exception {
+//        //Given
+//        Task task = new Task( 1L,"Test-Task", "Test");
+//        Long getId = task.getId();
+//        TaskDto taskDto = new TaskDto( 1L,"Test-TaskDto", "taskDto has task");
+//
+//        //When
+//        when(dbService.getFindByIdTask(getId)).thenReturn(task);
+//        when(taskMapper.mapToTaskDto(task)).thenReturn(taskDto);
+//
+//        //Then
+//        mockMvc
+//                .perform(MockMvcRequestBuilders
+//                        .get("/v1/task/getByIdTask?taskId=1")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                )
+//                // getFindByIdTask fields
+//                .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.is(1)))
+//                .andExpect(MockMvcResultMatchers.jsonPath("$.title", Matchers.is("Test-TaskDto")))
+//                .andExpect(MockMvcResultMatchers.jsonPath("$.content", Matchers.is("taskDto has task")));
+//    }
 
     @Test
     void testCreateTask() throws Exception {
@@ -126,7 +126,7 @@ class TaskControllerTest {
         //Then
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post("/v1/task/createTask?taskId=1")
+                        .post("/v1/tasks")       //"/v1/task/createTask?taskId=1"
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("UTF-8")
                         .content(jsonContent)
@@ -154,7 +154,7 @@ class TaskControllerTest {
         try {
             mockMvc
                     .perform(MockMvcRequestBuilders
-                            .put("/v1/task/updateTask?taskId=1")
+                            .put("/v1/tasks")        //"/v1/task/updateTask?taskId=1"
                             .contentType(MediaType.APPLICATION_JSON)
                             .characterEncoding("UTF-8")
                             .content(jsonContent)
@@ -187,7 +187,7 @@ class TaskControllerTest {
         try {
             mockMvc
                     .perform(MockMvcRequestBuilders
-                            .delete("/v1/task/deleteTask?taskId=1")
+                            .delete("/v1/tasks/1")     //"/v1/task/deleteTask?taskId=1"
                             .contentType(MediaType.APPLICATION_JSON)
                             .characterEncoding("UTF-8")
                             .content(jsonContent)

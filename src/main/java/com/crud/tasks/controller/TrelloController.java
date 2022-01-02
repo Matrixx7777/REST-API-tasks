@@ -19,53 +19,23 @@ public class TrelloController {
     @Autowired
     private final TrelloFacade trelloFacade;
 
-    @GetMapping("getTrelloBoards")
+    @RequestMapping(method = RequestMethod.GET, value = "/boards")
     public List<TrelloBoardDto> getTrelloBoards() {
         return trelloFacade.fetchTrelloBoards();
     }
 
-    @PostMapping("createTrelloCard")
+    @RequestMapping(method = RequestMethod.POST, value = "/cards")
     public CreatedTrelloCard createTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
         return trelloFacade.createCard(trelloCardDto);
     }
 
-//    private final TrelloService trelloService;
-//
 //    @GetMapping("getTrelloBoards")
-//    public List<TrelloBoardDto> getTrelloBoards(){
-//        return  trelloService.fetchTrelloBoards();
+//    public List<TrelloBoardDto> getTrelloBoards() {
+//        return trelloFacade.fetchTrelloBoards();
 //    }
 //
 //    @PostMapping("createTrelloCard")
 //    public CreatedTrelloCard createTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
-//        return trelloService.createTrelloCard(trelloCardDto);
-//    }
-
-//        private final TrelloClient trelloClient;
-
-//    @GetMapping("getTrelloBoards")
-//    public void getTrelloBoards() {
-//        List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
-//        trelloBoards.forEach(trelloBoardDto -> {
-//            System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName());
-//
-//            System.out.println("This board contains lists: ");
-//
-//            trelloBoardDto.getLists().forEach(trelloList -> {
-//                System.out.println(
-//                        trelloList.getName() + " - " + trelloList.getId() + " - " + trelloList.isClosed()
-//                );
-//            });
-//        });
-//    }
-
-//    @GetMapping("getTrelloBoards")
-//    public List<TrelloBoardDto> getTrelloBoards(){
-//        return  trelloClient.getTrelloBoards();
-//    }
-//
-//    @PostMapping("createTrelloCard")
-//    public CreatedTrelloCard createTrelloCard(@RequestBody TrelloCardDto trelloCardDto) {
-//        return trelloClient.createNewCard(trelloCardDto);
+//        return trelloFacade.createCard(trelloCardDto);
 //    }
 }
